@@ -70,6 +70,11 @@ public:
     * @brief 获取当前协程id 
     */
     static uint64_t GetFiberId();
+
+    /**
+     * @brief 设置调度协程(默认为主协程)
+    */
+    static void SetSchedulerFiber(Fiber* f);
 private:
     // 协程id 
     uint64_t m_id        = 0;
@@ -85,6 +90,8 @@ private:
     std::function<void()> m_cb;
     // 本协程是否参与调度器调度
     bool m_runInScheduler;
+public:
+    std::mutex m_mutex;
 };
 
 }; 

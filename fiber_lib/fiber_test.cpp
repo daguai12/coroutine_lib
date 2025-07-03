@@ -1,6 +1,5 @@
 #include "fiber.h"
 #include <vector>
-#include <thread>
 
 using namespace sylar;
 

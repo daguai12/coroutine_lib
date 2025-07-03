@@ -226,6 +226,7 @@ void Fiber::MainFunc()
     assert(curr!=nullptr);
 
     curr->m_cb();
+    curr->m_cb = nullptr;
     curr->m_state = TERM;
 
     //运行完毕 -> 让出执行权力
@@ -234,4 +235,14 @@ void Fiber::MainFunc()
     raw_ptr->yield();
 }
 
+/**
+* @brief 设置调度协程(默认为主协程)
+*/
+void Fiber::SetSchedulerFiber(Fiber* f)
+{
+    t_scheduler_fiber = f;
+}
+
 };
+
+
