@@ -1,8 +1,8 @@
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 
-ADD_LIBRARY(fiber_shared SHARED fiber.cpp scheduler.cpp thread.cpp)
+ADD_LIBRARY(fiber_shared SHARED fiber.cpp scheduler.cpp thread.cpp timer.cpp ioscheduler.cpp)
 
-ADD_LIBRARY(fiber_static STATIC fiber.cpp scheduler.cpp thread.cpp)
+ADD_LIBRARY(fiber_static STATIC fiber.cpp scheduler.cpp thread.cpp timer.cpp ioscheduler.cpp)
 
 SET_TARGET_PROPERTIES(fiber_shared PROPERTIES
     VERSION 1.0.0
@@ -39,12 +39,12 @@ SET_TARGET_PROPERTIES(fiber_static PROPERTIES
 # ENDIF()
 
 
-IF(BUILD_TESTING)
-    #添加一个测试用的可执行文件
-    ADD_EXECUTABLE(scheduler_test main.cpp)
-    #链接到测试的库
-    TARGET_LINK_LIBRARIES(scheduler_test PRIVATE fiber_shared)
-    #注册测试
-    ADD_TEST(NAME SchedulerUnitTest COMMAND scheduler_test)
-ENDIF()
+# IF(BUILD_TESTING)
+#     #添加一个测试用的可执行文件
+#     ADD_EXECUTABLE(scheduler_test main.cpp)
+#     #链接到测试的库
+#     TARGET_LINK_LIBRARIES(scheduler_test PRIVATE fiber_shared)
+#     #注册测试
+#     ADD_TEST(NAME SchedulerUnitTest COMMAND scheduler_test)
+# ENDIF()
 

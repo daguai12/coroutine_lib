@@ -232,7 +232,7 @@ void Scheduler::idle()
 	while(!stopping())
 	{
 		if(debug) std::cout << "Scheduler::idle(), sleeping in thread: " << Thread::GetThreadId() << std::endl;	
-		sleep(1);	
+		sleep(1);
 		Fiber::GetThis()->yield();
 	}
 }
